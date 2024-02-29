@@ -1,0 +1,112 @@
+---------------------------------------> Resumo Aula 1
+
+			A aula abordou diferentes conceitos relacionados ao mundo da criptografia e blockchain. 
+				
+				A seguir está um resumo dos tópicos principais:
+
+						Hash Functions: 
+							São funções que operam sobre uma entrada de qualquer tamanho e retornam um valor fixo de tamanho fixo. 
+							Eles são amplamente utilizados em criptografia para validar e garantir a autenticidade de dados e documentos digitais.
+							
+						Chaves Públicas: 
+							São chaves que são compartilhadas por diferentes partes em uma transação ou sistema. 
+							As chaves públicas são essenciais para a comunicação segura entre as partes em uma blockchain.
+							
+						Assinatura com Ethereum ou Bitcoin: 
+							A assinatura com Ethereum ou Bitcoin é uma funcionalidade que usa a chave pública de um usuário para assinar uma transação. 
+							Isso garante a authenticity e a integridade da transação.
+							
+						Transação: 
+							Uma transação é um conjunto de informações que são processadas por uma blockchain, como valores, destinatários e informações adicionais. 
+							Elas são usadas para transferir ativos digitais de uma parte para outra.
+							
+						Gerenciamento de Saldos da carteira (Ethereum e Bitcoin): 
+							O gerenciamento de saldos da carteira é um processo fundamental em qualquer moeda digital. 
+							Em Ethereum e Bitcoin, o gerenciamento de saldos é realizado de forma diferente devido às diferenças nos protocolos dessas moedas. 
+							Abaixo estão mais detalhes sobre como funciona o gerenciamento de saldos nessas moedas:
+							
+								Ethereum: 
+									Em Ethereum, o gerenciamento de saldos é feito por meio de smart contracts. 
+									Os smart contracts são programas que são usados para gerenciar a interação entre os participants e a rede Ethereum. 
+									Os smart contracts são programados para verificar e processar transações, e também para manter o saldo dos usuários em seu wallet.
+									
+								Bitcoin:
+								
+									No Bitcoin quando um usuário envia uma transação, eles precisam assinar o valor que será enviado e também assinar o saldo remanescente em sua carteira para que ele pareça validado.
+										Neste processo o usuário envia uma transação com o valor que deseja transferir para a carteira do destinatário e o valor que deseja colocar na própria carteira. 
+										A transação tem duas assinaturas, uma é a assinatura do usuario, que é usada para validar a transação, e a outra é a assinatura do destinatário, que é usada para garantir que o valor seja enviado corretamente.
+									A assinatura do usuário é gerada usando a chave privada do usuário. 
+										Isso permite que o usuário tenha controle completo sobre o valor que deseja enviar e também sobre o saldo remanescente em sua carteira. 
+										Ao assinar a transação, o usuário está dizendo que a transação é válida e que ele deseja que ela seja processada.
+									A assinatura do destinatário é gerada usando a chave pública do destinatário. 
+										Isso garante que o valor seja enviado corretamente para a carteira do destinatário.
+									Quando o valor é enviado, o valor que é necessário para colocar na própria carteira é adicionado ao saldo da carteira. 
+										Isso garante que o saldo da carteira sempre seja atualizado corretamente.
+							
+						Anatomia de uma TX: 
+							Uma transação contém informações importantes, como valores, destinatários, informações adicionais e assinaturas. 
+							É importante entender a estrutura de uma transação antes de processá-la.
+							
+						Gas: 
+							Gas é uma medida usada em blockchains para controlar os recursos de processamento e armazenamento usados por uma transação.
+							
+						Blocks: 
+							Um bloco é uma unidade de dados dentro de uma blockchain, que contém múltiplas transações. 
+							É importante entender a estrutura de um bloco para processá-lo corretamente.
+						
+						Anatomia de um Bloco: 
+							Um bloco contém informações importantes, como transações (com suas assinaturas), metadados, hash do bloco anterior e informações de mineração.
+							
+						Merkle Tree: 
+							O Merkle Tree é uma estrutura de árvore usada em sistemas de hash distributed para aumentar a eficiência de verificação e armazenamento de dados. 
+							Ele funciona dividindo o valor final da hash em várias peças menores. 
+							Além disso, ele armazena o valor de hash para cada pedaço da árvore de uma forma eficiente.
+
+							As principais características do Merkle Tree são:
+
+								Divisão em pequenas peças: 
+									Em vez de armazenar o valor de hash final inteiro para cada transação, o Merkle Tree armazena vários valores de hash parciais. 
+									Isso reduz o tamanho total da estrutura.
+									
+								Verificação eficiente: 
+									Para verificar a integridade de um valor de hash final, apenas o valor de hash final precisa ser verificado em vez de toda a estrutura. 
+									Isso reduz o tempo de verificação.
+									
+								Armazenamento eficiente: 
+									O Merkle Tree é armazenado como uma árvore, onde o valor de hash final é armazenado na raiz e os valores de hash parciais são armazonados em cada nodo. 
+									Isso é feito uma forma eficiente e poupa espaço em disco.
+									
+								Resistente a manipulação: 	
+									Se alguma parte do Merkle Tree for manipulada, o valor de hash final será alterado e a integridade do valor será perdida. 
+									Isso garante a integridade dos dados no sistema.
+									
+								Exemplo:
+										
+										Data: a
+										Data: b
+										Data: c
+										Data: d
+										
+											Leaf: h(a) = A
+											Leaf: h(b) = B
+											Leaf: h(c) = C
+											Leaf: h(d) = D
+											
+												Node: h(A + B)
+												Node: h(C + D)
+												
+													Root: h (AB + CD)									
+																		
+						Consensus:
+							Consensus é um processo usado para garantir que todos os participants em um sistema descentralizado estejam de acordo com os dados sendo processados. 
+							Existem dois principais tipos de Consensus: Proof-of-Work (PoW) e Proof-of-Stake (PoS).
+
+							Proof of Work (PoW) (Consenso por Trabalho): 
+								Esse é o processo mais usado em blockchain e envolve a resolução de puzzles criptograficos. 
+								Isso é feito por mineradores que competem entre si para resolver o "desafio" e obter a oportunidade de processar uma transação. 
+								Os mineradores que resolvem o "desafio" primeiro são recompensados com uma taxa de transação ou uma nova moeda como Bitcoin.
+								
+							Proof of Stake (PoS) (Consenso por Posse): 
+								Nessa abordagem, os participantes precisam possuir uma certa quantidade de tokens e usá-los para validar transações. 
+								Os token holders recebem recompensas em proporção ao tamanho de suas posses, o que incentiva maior participacão na rede.
+								O consenso é um conceito chave em blockchain e ajuda a garantir a segurança e a consistencia dos dados do sistema.
