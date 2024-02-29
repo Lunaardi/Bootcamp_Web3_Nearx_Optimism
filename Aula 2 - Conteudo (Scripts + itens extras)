@@ -1,0 +1,318 @@
+Aula 2 - JavaScript (Resumo incorporado, + conceitos extras) 
+
+	Como funciona um Computador
+		
+		Um computador é composto por vários componentes que trabalham juntos para processar informações e executar tarefas. Os principais componentes de um computador incluem:
+	
+			SSD/HD
+				Disco Rígido (HD): 
+					É o armazenamento de longo prazo do computador que armazena dados e ficheiros de maneira permanente.
+				Disco Rigido Estado Sólido (SSD): 
+				É uma alternativa ao HD, que armazena informações na memória flash, o que o torna mais rápido e eficiente do que o HD.
+			RAM
+				Memória RAM: 
+					É a memória de curto prazo do computador. 
+					Ela armazena as informações que o processador está usando para executar tarefas e programas.
+			CPU
+				Processador (CPU): 
+					É o “cérebro” do computador que executa as instruções do software. 
+					O processador processa informações através da manipulação de bits binários em suas portas lógicas.					
+			GPU
+				Unidade de Processamento Gráfico (GPU):
+					É um chip que ajuda o processador a processar gráficos e animações mais rapidamente.
+			Placa-Mãe	
+				É o componente que conecta todos os componentes do computador. Ela é responsável pela conexão do processador, da memória RAM e da GPU, perifericos e alimentação.
+			
+		Quando você usa um computador, todos os componentes trabalham juntos para processar as informações e executar tarefas.		
+
+	Como funciona a Web		
+		A web é uma rede global de servidores e clientes que usam protocols de rede padronizados para compartilhar informações por meio de aplicativos e serviços que funcionam na web.
+	
+		Server-Client
+			O principal protocolo de rede utilizado na web é o HTTP, que permite que clientes e servidores comuniquem-se de maneira eficaz.
+			A interação entre clientes e servidores na web é organizada em uma estrutura cliente-servidor.
+			Isso significa que os clientes enviam pedidos aos servidores, e os servidores respondem com informações ou dados.
+			Exemplo:
+				Quando você digita um endereço de site em um navegador, o cliente envia uma solicitação HTTP ao servidor do site.
+					O servidor então responde com a página do site solicitada.
+						Nesse processo, o cliente e o servidor comunicam-se através de protocolos de rede padronizados como HTTP.
+	
+		P2P
+			O modelo de interação web P2P (Peer-to-Peer), permite que os clientes compartilhem informações diretamente com outros clientes, em vez de dependerem exclusivamente de servidores centrais. 
+			Esse modelo pode ser usado para compartilhar arquivos, vídeos, áudio e outros recursos na web.
+			
+	Ambiente JavaScript
+		JavaScript é uma linguagem de programação de alto nível, projetada para ser usada no lado do cliente, geralmente em navegadores e aplicativos de web.
+		Ela é projetada para ser simples de aprender e usar, e fornece uma variedade de recursos para construir aplicativos interativos na web.
+	
+			NPM
+				NPM (Node Package Manager) é uma plataforma de gerenciamento de pacotes para a linguagem Node.js, que é um ambiente de execução de JavaScript no lado do servidor.
+				Ele fornece um sistema de gerenciamento e distribuição de pacotes para aplicativos Node.js, permitindo que desenvolvedores dividam seu código em pacotes menores e reutilizáveis.
+		
+			Node.js
+				Node.js é um ambiente de execução de JavaScript no lado do servidor, que é projetado para permitir que desenvolvedores escrevam aplicativos de servidor-cliente apenas em JavaScript.
+				Isso significa que, em vez de usar linguagens de programação adicionais como C++ ou Java para construir servidores, desenvolvedores podem usar JavaScript para tanto o lado do cliente quanto do servidor.
+					Link Node.js
+						https://nodejs.org/en	
+			
+			npm, package.json
+				npm" é uma ferramenta de gerenciamento de pacotes JavaScript, que é usada para controlar as dependências de um projeto.
+				O pacote principal de um projeto é armazenado em um arquivo chamado "package.json", que contém informação sobre o pacote principal e suas dependências.
+				Os pacotes em um projeto podem ser organizados em hierarquias de dependências, em que cada pacote depende de um ou mais pacotes pai em sua hierarquia.
+				Quando um pacote depende de outro, o processo de gerenciamento de pacotes usa o "npm" para baixar automáticamente os pacotes necessários para o pacote dependente.
+			
+			Frameworks
+				Frameworks são estruturas de código que fornecem uma estrutura pré-fabricada para criar aplicativos de forma mais rápida e fácil.
+				Ele fornece uma camada de abstração entre a funcionalidade básica do JavaScript e o código de aplicativo real.
+				Alguns dos principais frameworks JavaScript incluem React, Angular e Vue.js, que ajudam os desenvolvedores a criar aplicações de forma mais eficiente e mais rápida.
+				Esses frameworks fornecem um conjunto de bibliotecas e recursos para ajudar os desenvolvedores a lidar com tarefas comuns, como manipulação da página, gerenciamento de estados, conectividade da web, entre outros.
+					Link Frameworks:
+						https://www.npmjs.com/package/express
+						
+	Projeto de Transferir arquivos por Wifi
+	
+		Mostrar HTML
+		
+			Exemplo de pagina simpes de HTML (Contador)(executar em Visual Studio Code)
+				
+				<!DOCTYPE html>
+						<html lang="pt">
+						<head>
+						<meta charset="UTF-8">
+						<meta name="viewport" content="width=device-width, initial-scale=1.0">
+						<title>Minha Página com Contador</title>
+						<style>
+							body {
+								font-family: Arial, sans-serif;
+								margin: 40px;
+								background-color: #f0f0f0;
+							}
+							h1 {
+								color: #333;
+								text-align: center;
+							}
+							.container {
+								max-width: 800px;
+								margin: auto;
+								background-color: #fff;
+								padding: 20px;
+								box-shadow: 0 0 10px rgba(0,0,0,0.1);
+							}
+							button {
+								display: block;
+								margin: 20px auto;
+								padding: 10px 20px;
+								font-size: 16px;
+								cursor: pointer;
+							}
+						</style>
+						</head>
+						<body>
+
+						<div class="container">
+							<h1>Contador com JavaScript</h1>
+							<p id="contador">Contagem: 0</p>
+							<button id="botaoContador">Clique aqui!</button>
+						</div>
+
+						<script>
+							// Seleciona o elemento do parágrafo e o botão
+							const contador = document.getElementById("contador");
+							const botaoContador = document.getElementById("botaoContador");
+							
+							let contagem = 0; // Inicializa a variável contagem
+
+							// Adiciona um ouvinte de eventos para "click" no botão
+							botaoContador.addEventListener("click", function() {
+								contagem += 30; // Incrementa a contagem
+								contador.textContent = "Contagem: " + contagem; // Atualiza o texto do parágrafo com a nova contagem
+							});
+						</script>
+
+						</body>
+						</html>
+					
+			Exemplo de pagina simpes em HTML (Mensagem, edit: "h1" e "p")(executar em Visual Studio Code)
+					
+				<script> //Criando uma pagina web simples </script>
+				<!DOCTYPE html> 
+				<html lang="pt">
+				<head>
+					
+
+					<meta charset="UTF-8"> 
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<title>Minha Página com Contador</title>
+						<style>
+							body {
+								font-family: Arial, sans-serif;
+								margin: 40px;
+								background-color: #f0f0f0;
+							}
+							h1 {
+								color: #333;
+								text-align: center;
+							}
+							.container {
+								max-width: 800px;
+								margin: auto;
+								background-color: #fff;
+								padding: 20px;
+								box-shadow: 0 0 10px rgba(0,0,0,0.1);
+											}
+							button {
+								display: block;
+								margin: 20px auto;
+								padding: 10px 20px;
+								font-size: 16px;
+								cursor: pointer;
+											}
+						</style>
+						</head>
+						<body>
+
+							<div class="container"> 
+											
+								<h1>Olá Paulo Lunardi!</h1>
+								<p> Esta é uma pagina simples HTML com CSS incorporado., Voce pode usar este exemplo como
+								ponto de partida para criar suas próprias páginas web. Sinta-se livre para modificar o HTML e o class
+								conforme necessário para atender as suas necessidades. Aproveite para explorar mais sobre desenvolvimento web e se dibvertir criando!
+								</p>
+										
+							</div>
+
+							</body>
+							</html>					
+				
+			Exemplo de pagina simpes em HTML (seleciona um arquivo, carrega e envia)(executar em Visual Studio Code)
+					Link Imagem utilizada na aula:
+						https://github.com/nrxschool/bootcamp-optimism/blob/main/week1/day2/uploads/foto-bitcoin.jpg
+				
+				<!DOCTYPE html>
+				<html>
+
+				<head>
+					<title>⬆️ Uploader</title>
+				</head>
+
+				<body>
+					<h2>Upload de Arquivo</h2>
+
+					<!-- FORMS -->
+					<form id="uploadForm" enctype="multipart/form-data">
+						<input type="file" name="arquivo" required>
+						<button type="button" onclick="uploadFile()">Enviar Arquivo</button>
+					</form>
+
+					<!-- PROGRESS BAR -->
+					<div>
+						<progress id="uploadProgress" value="0" max="100" style="width:100%;"></progress>
+					</div>
+
+					<!-- UPLOADER JAVASCRIPT -->
+					<script>
+						function uploadFile() {
+							var form = document.getElementById('uploadForm');
+							var formData = new FormData(form);
+							var xhr = new XMLHttpRequest();
+
+							// Configura a barra de progresso
+							var progress = document.getElementById('uploadProgress');
+							xhr.upload.onprogress = function (e) {
+								if (e.lengthComputable) {
+									var percentComplete = (e.loaded / e.total) * 100;
+									progress.value = percentComplete;
+								}
+							};
+
+							xhr.onload = function () {
+								if (xhr.status == 200) {
+									alert("✅ Upload completo!");
+									progress.value = 0;
+								} else {
+									alert("🚨 Erro no upload: " + xhr.status);
+								}
+							};
+
+							xhr.open('POST', '/upload', true);
+							xhr.send(formData);
+						}
+					</script>
+				</body>
+
+				</html>
+				
+				
+		Mostrar JavaScript
+			Funções que carrega um ou 
+			
+				const express = require('express');
+				const multer = require('multer');
+				const app = express();
+				const port = 3001;
+				const os = require('os');
+
+				function getLocalIpAddress() {
+					const interfaces = os.networkInterfaces();
+					for (const iface of Object.values(interfaces)) {
+						for (const alias of iface) {
+							if (alias.family === 'IPv4' && !alias.internal) {
+								return alias.address;
+							}
+						}
+					}
+					return '0.0.0.0';
+				}
+
+				const upload = multer({ dest: 'uploads/' });
+
+
+				const page = express.static('public')
+				app.use(page);
+
+				app.get('/', (req, res) => {
+					res.sendFile(__dirname + '/index.html');
+				});
+
+
+				app.post('/upload', upload.single('arquivo'), (req, res) => {
+					console.log(req.file);
+					res.send('Arquivo recebido!');
+				});
+
+				app.listen(port, () => {
+					console.log(`Servidor rodando em http://${getLocalIpAddress()}:${port}`);
+				});
+				
+					// esclarecimentos de algumas funcões e variáveis:
+	
+						const express = require('express');
+							O arquivo "express.js" é um framework popular para construir aplicativos da Web utilizando Node.js. 
+							Ele permite que desenvolvedores criem aplicações web de forma simples e rápida.
+			
+						const multer = require('multer');
+							O pacote "multer" permite que desenvolvedores façam upload de arquivos em seus aplicativos web. 
+							Ele fornece uma interface simples para o upload de arquivos.
+							
+						const app = express();
+							A variável "app" é uma instância de um objeto express que é usado para construir o servidor em Node.js.
+							
+						const port = 3001
+							A variável "port" define a porta na qual o servidor se listenará.
+							
+						const os = require('os');
+							O pacote "os" é usado para acessar informações sobre o sistema operacional em que o aplicativo está rodando.
+							Aqui, ele é usado para obter o endereço IP do computador no qual o servidor está rodando.
+							
+						function getLocalIpAddress()
+							A função "getLocalIpAddress" é usada para obter o endereço IP do computador no qual o servidor está rodando.
+							Ela usa as funções fornecidas pelo pacote "os" para listar todas as redes disponíveis e retorna o endereço IP correspondente.
+							
+						const upload = multer({ dest: 'uploads/', limits: { fileSize: 5 * 1024 * 1024 } });
+							A variável "upload" é uma instância do objeto "multer" que é usado para processar o upload de arquivos na aplicação. 
+							A propriedade "dest" especifica o destino dos arquivos que serão enviados pelo cliente para o servidor.
+							A propriedade "limits" define um limite de tamanho para os arquivos que podem ser enviados pelo cliente.
+							
+						const page = express.static('public')
+							A variável "page" é uma instância de um objeto "express" que é usado para usar um diretório específico como pasta estática. 
+							No caso, a pasta "public" é usada.
