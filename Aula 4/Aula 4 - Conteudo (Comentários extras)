@@ -1,0 +1,119 @@
+Aula 4 - Blockchain Básico
+
+	Bibliotecas mais utilizadas:
+	
+			Wallet, Signature, Transaction, Smartcontract, Client-Node
+			
+				Web3js
+					Web3.js é uma biblioteca de JavaScript que permite interagir com o ecossistema Ethereum por meio de scripts.
+					Ele é amplamente utilizado em aplicações descentralizadas baseadas em blockchain, permitindo a interação com os smart contracts da Ethereum.
+					
+						Link: https://web3js.readthedocs.io/en/v1.10.0/
+						Link Provider: https://www.alchemy.com/
+						
+							Versionamento Semântico 2.0.0
+								
+								É um sistema de versionamento que usa uma série de números para representar cada versão de um software.
+								O Versionamento Semântico é usado para garantir que as atualizações são aplicadas corretamente e que o software é confiável.
+								Cada número tem um significado específico, e todos eles são utilizados juntos para determinar a versão total do software.
+
+									Maior (Major): Esse número representa uma grande mudança no software, como uma nova funcionalidade ou uma grande mudança na arquitetura do software.
+									Menor (Minor): Esse número representa uma atualização menor no software, como correções de bugs, melhorias na performance ou novas funções pequenas.
+									Mínimo: Esse número representa uma correção de bug ou uma atualização pequena no software, como um bugfix.
+									Hotfix: Esse número é usado para indicar que o software precisa ser atualizado rapidamente, porque uma falha foi descoberta após a liberar da versão anterior.
+											
+				Ethersjs
+					EthersJS é uma biblioteca para JavaScript que permite criar aplicativos para as redes Ethereum em Node.js, usando a linguagem JavaScript.
+					É uma biblioteca de código aberto e de fácil uso, que tem como objetivo tornar a criação de aplicativos Ethereum acessível a um público mais amplo.
+					
+						Link: https://docs.ethers.org/v6/
+						
+				Viem
+					É uma biblioteca de JavaScript para a interação com sistemas de rede P2P (peer-to-peer). Isso permite que os dados sejam compartilhados diretamente entre os usuários, em vez de ser armazenados em um servidor centralizado.
+					Amplamente utilizado em sistemas descentralizados, permitindo a comunicação direta entre os usuários, sem a necessidade de um terceiro mediador.
+					
+						Link: https://viem.sh/
+			
+			Front-end	
+					
+				Wagmi
+					WagmiAbi é uma ferramenta de desenvolvimento front-end para o ecossistema Ethereum, que auxilia os desenvolvedores de aplicações a lidar com os desafios do desenvolvimento de aplicativos, como conectividade de carteiras, suporte a múltiplas redes, assinatura de mensagens e dados, envio de transações, escuta de eventos e atualização de dados da blockchain estagnados.
+					Ela também é projetada para ser fácil de usar e para fornecer suporte a experiência, desempenho, cobertura de recursos e estabilidade.
+				
+						Link: https://wagmi.sh/
+				
+				RanbowKit
+					RainbowKit é uma biblioteca de JavaScript que permite criar aplicativos para a rede blockchain do Bitcoin.
+					Ele fornece funções para criar, assinar e enviar transações de bitcoin, e também para verificar o status e as informações da cadeia de blocos do bitcoin.
+					Foi projetado para ser fácil de usar e de fácil integração em aplicativos de bitcoin.
+					
+			Smartcontracts
+			
+				Python
+				
+					Brownie
+					
+						Brownie é uma ferramenta de desenvolvimento de smart contracts para Ethereum, desenvolvida pela OpenZeppelin. 
+						Ela foi projetada para ser uma alternativa leve e fácil de usar aos tradicionais frameworks de desenvolvimento de smart contracts, como Truffle ou Hardhat. 
+						Brownie fornece uma série de ferramentas para apoiar o processo de desenvolvimento, como testes de contrato, simulação de rede, criação de contractos e depuração. 
+						Ele também fornece suporte para múltiplas redes, como Polygon, Aurora e Optimism.
+			
+							Link: https://eth-brownie.readthedocs.io/en/stable/
+									
+					ApeWorksX
+						
+						ApeWorksX é uma ferramenta de desenvolvimento de aplicativos descentralizados (DApps) para Ethereum, desenvolvida pela Consensys. 
+						Ela é projetada para fornecer um conjunto de ferramentas de desenvolvimento para ajudar os desenvolvedores a construir aplicativos descentralizados de alta qualidade e escaláveis. 
+						ApeWorksX é altamente configurável e conta com uma biblioteca de components que os desenvolvedores podem usar para construir aplicações mássias. 
+						Ele também possui suporte para múltiplas redes, como Polygon, Aurora, Optimism, entre outras.
+					
+							Link:https://www.apeworx.io/
+				
+				JavaScript
+	
+					Truffle
+						
+						Truffle é uma ferramenta de desenvolvimento para contrato smart Ethereum, desenvolvida pela Consensys.
+						Projetado para facilitar o desenvolvimento, testes e deploy de aplicativos descentralizados na Ethereum. 
+						O Truffle possui uma série de ferramentas para apoiar o processo de desenvolvimento, como testes de contrato, simulação de rede, criação de contractos, entre outros.
+						Amplamente utilizado pela comunidade Ethereum para desenvolver aplicações descentralizadas de alta qualidade e escaláveis.
+					
+							Link: https://archive.trufflesuite.com/
+					
+					Hardhat
+					
+						Hardhat é um framework de desenvolvimento de smart contracts para Ethereum, criado pela Omeda. 
+						Ele é projetado para ser uma alternativa leve e fácil de usar aos tradicionais frameworks de desenvolvimento de smart contracts, como Truffle ou Brownie.
+						Hardhat fornece uma série de ferramentas para apoiar o processo de desenvolvimento, como testes de contrato, simulação de rede, criação de contractos e depuração.
+					
+							Link: https://hardhat.org/
+				Solidity
+				
+					Foundry
+				
+						É uma plataforma de desenvolvimento de contratos inteligentes para Ethereum, desenvolvida pela Blocknative. Ela é voltada para usuários mais avançados, oferecendo recursos avançados de construção, teste e depuração para contracts inteligentes.
+						Também possui suporte para múltiplas redes, como BNB Chain, Polygon, Polygon Edge, entre outras. Ela oferece uma serie de ferramentas para apoiar o processo de desenvolvimento, como simulação de rede em tempo real, depuração de smart contracts, entre outros.
+					
+							Link: https://book.getfoundry.sh/
+					
+					Merkly
+					
+						Merkle é um framework de desenvolvimento de smart contracts para Ethereum, criado pela Omeda. 
+						Ele é projetado para ser uma alternativa leve e fácil de usar aos tradicionais frameworks de desenvolvimento de smart contracts, como Truffle ou Brownie.
+						Merkle fornece uma série de ferramentas para apoiar o processo de desenvolvimento, como testes de contrato, simulação de rede, criação de contractos e depuração.
+					
+							Link: Não informado
+					
+					Mythx/Mithril
+						
+						Mythx
+
+							É uma plataforma de desenvolvimento de aplicativos descentralizados (DApps) para Ethereum, desenvolvida pela Myth Labs.
+							Ela é projetada para ser uma alternativa para Truffle ou Brownie, oferecendo uma abordagem mais moderna e flexível para o desenvolvimento de smart contracts e DApps.
+							Fornece uma série de ferramentas para apoiar o processo de desenvolvimento, como testes de contratos, simulação de rede, criação de contractos, depuração e mais.
+				
+						Mithril 
+						
+							É um framework de desenvolvimento de smart contracts para Ethereum, criado pela Omeda. 
+							Ele é projetado para ser uma alternativa leve e fácil de usar aos tradicionais frameworks de desenvolvimento de smart contracts, como Truffle ou Brownie.
+							Mithril fornece uma série de ferramentas para apoiar o processo de desenvolvimento, como testes de contrato, simulação de rede, criação de contractos e depuração.
