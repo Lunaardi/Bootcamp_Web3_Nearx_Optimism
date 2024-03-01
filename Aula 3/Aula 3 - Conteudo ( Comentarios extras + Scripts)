@@ -1,0 +1,166 @@
+Aula 3 - Blockchain Básico.
+
+	Criptografia
+	
+		Hash Functions
+		
+			Hash é uma função que transforma um valor de entrada de tamanho arbitrário em um valor de saída de tamanho fixo, geralmente um inteiro. 
+			As funções de hash são usadas em vários campos, como ciência da computação, criptografia e bancos de dados.
+
+			Em bancos de dados, funções de hash são usadas para hashar valores de coluna e usá-los como chaves para acesso e retração de dados. 
+				Isso permite uma retração de dados più eficiente. 
+				
+			Em criptografia, funções de hash são usadas para gerar hash criptográficos, que são usados para verificar a integridade de dados.
+
+			Funções de hash também são usadas em programação e outros campos, como tabelas de hash e árvores de hash, para estruturação e recuperação de dados eficientes.
+			
+			Elas também são usadas em algoritmos de hash como SHA-256 e MD5, que são usados para assinaturas digitais, autenticação de mensagem e integridade de dados.
+		
+				RIPEMD-160
+				
+					É uma função de hash criptográfica que transforma uma mensagem de qualquer tamanho em uma chave de 160 bits.
+					Esta função é um algoritmo de hash de mensagens, cujo objetivo é resumir a mensagem em uma chave de tamanho fixo, o que é útil em diversos contextos de segurança e criptografia.
+					Também é amplamente utilizado em sistemas de segurança de informação, como a segurança de dados e criptografia.
+				
+						Pro: Bom equilíbrio entre segurança e tamanho de saída, ideal para endereços de carteira de criptomoedas.
+						Contra: Menos seguro que algoritmos de hash mais recentes e de maior tamanho, como o SHA-256.
+					
+				SHA256
+				
+					SHA256 é uma função de hash criptográfica que transforma uma mensagem de qualquer tamanho em uma chave de 256 bits. 
+					Este algoritmo é usado em diversos contextos criptográficos, como autenticação e verificação de integridades de dados.
+					É amplamente utilizado em sistemas de segurança de informação, como segurança de dados, criptografia, autenticação e verificação de integrididades de dados. 
+				
+						Pro: Alta segurança, resistente a colisões e pré-imagens, sendo fundamental para a segurança de blockchain e Bitcoin.
+						Contra: Saídas relativamente grandes e potencialmente mais lento que algoritmos mais novos e eficientes.
+					
+				Keccak256 (SHA-3_256)
+				
+					É uma função de hash criptográfica que transforma uma mensagem de qualquer tamanho em uma chave de 256 bits. 
+					Isto permite um resumo confiável e seguro de uma mensagem.
+					Foi selecionada como a terceira função de hash doSHA3-256 e foi escolhido pelos seus desenvolvedores como o padrão SHA-3 de 2015.
+				
+						Pro: Resistente contra ataques de criptografia quântica, oferecendo segurança em um contexto pós-quântico.
+						Contra: Maior complexidade de implementação devido à sua estrutura única e novidade.
+					
+				BLAKE2b
+				
+					BLAKE2b (Berry-Levin Auto-Cryptographic Hash) é uma função de hash criptográfica que permite a geração de uma chave de 64 bits, a partir de uma mensagem de qualquer tamanho.			
+					Tem um grande número de variações, incluindo BLAKE2s, BLAKE2b, e BLAKE2x.
+					Cada versão oferece um equilíbrio único de segurança, segurança e eficiência em termos de memória, e é usado em sistemas criptográficos e de autenticação.
+								
+						Pro: Superior em velocidade e eficiência comparado ao SHA-256, ideal para aplicações que necessitam de alta performance.
+						Contra: Não tão amplamente reconhecido ou adotado como padrão quanto o SHA-256, limitando seu uso em alguns contextos.
+					
+				SHAKE128 (Variante do SHA-3 com saída extensível)
+				
+					SHAKE128 é uma função de hash criptográfica que permite a geração de uma chave de 128 bits, a partir de uma mensagem de qualquer tamanho.
+					É projetado para ser seguro contra a maioria dos ataques de hash, e é amplamente utilizado em sistemas criptográficos e de autenticação.
+					Variante do SHA-3, com a capacidade para gerar saídas de diferentes tamanhos, incluindo 160, 224, 256 e 512 bits, o que a torna uma função de hash versátil em termos de tamanho da chave e segurança.
+				
+						Pro: Flexibilidade no tamanho da saída permite ajustes conforme necessidade de segurança, tornando-o versátil.
+						Contra: A saída flexível pode complicar a interoperabilidade e padronização em sistemas que esperam um tamanho de hash fixo.
+					
+	Criptografia Assimétrica
+	
+		Criptografia assimétrica, também conhecida como criptografia de chave pública, é um tipo de criptografia que usa duas chaves diferentes para criptografar e decriptografar dados. 
+		Uma chave é usada para criptografar e é mantida privada pelo remetente, enquanto a outra chave é usada para decriptografar e é divulgada publicamente pelo destinatário.
+	
+		🔏 Curvas Elípticas:
+
+			ECDSA (secp256k1)
+			
+				É o acrônimo de Elliptic Curve Digital Signature Algorithm, que é umalgoritmo de assinatura digital baseado em curvas elípticas, também conhecido como ECDSA. 
+				O ECDSA é baseado em curvas elípticas que são menos propensas a ataques do que curvas ovais, e sua segurança é baseada na dificuldade de resolver problemas de fatoração em números primos.
+				ECDSA é amplamente utilizado em sistemas de criptografia como Bitcoin e Blockchain, onde é usada para gerar assinaturas digitais que podem ser verificadas por outros usuários da rede. 
+				Em comparação com outros algoritmos de assinatura digital, ECDSA tem a vantagem de ser mais eficiente em termos de armazenamento de dados e processamento, além de ser mais segura contra ataques de fatoramento de números primos.
+			
+					Pro: Amplamente adotado e testado, sendo a base da segurança para o Bitcoin, oferecendo um alto nível de confiança e segurança comprovada.
+					Contra: Vulnerável a ataques de canal lateral se não implementado corretamente, além de depender da qualidade da geração de números aleatórios para a segurança das chaves.
+				
+			EdDSA (curve25519)
+			
+				Elliptic Curve Digital Signature Algorithm é um algoritmo de assinatura digital baseado em curvas elípticas, também conhecido como Curve25519.
+				Ele é usado para gerar assinaturas digitais em sistemas de criptografia, que permitem que uma parte demonstre para outros usuários que ela é a proprietária de uma mensagem ou documento específico.
+				Também é uma curva elíptica que é considerada uma das curvas elípticas mais seguras disponivies atualmente, pois ela é difícil de atacar por meio de algoritmos de fatoramento de números primos, que são as principais técnicas conhecidas para atacar curvas elípticas.
+				Dado à sua segurança, Curve25519 é amplamente utilizada em sistemas de criptografia, como Bitcoin e Blockchain, onde é usada para gerar assinaturas digitais que podem ser verificadas por outros usuários da rede.
+			
+					Pro: Alta performance e segurança, com resistência a uma gama de ataques criptográficos, incluindo ataques de canal lateral. 
+						 Ideal para sistemas que requerem assinaturas digitais rápidas e seguras.
+					Contra: Menos onipresente em termos de adoção quando comparado ao ECDSA, o que pode limitar a interoperabilidade com sistemas mais antigos ou estabelecidos.
+				
+			Schnorr (ristretto25519)
+			
+				Algoritmo de assinatura digital que pode ser baseado na Curve25519, uma curva elíptica que é amplamente considerada como um das curvas elípticas mais seguras atualmente disponíveis.
+				Curva ellíptica baseada em Curve25519 e tem a vantagem de ser mais rápida e eficiente que outros algoritmos de assinatura digital, como ECDSA.
+				Gera assinaturas digitais que podem ser verificadas por outros usuários da rede. 
+				É o mais rápido e eficiente do que ECDSA, mas ainda é muito seguro, pois é baseado na Curve25519.
+			
+					Pro: Permite a agregação de assinaturas, o que pode melhorar significativamente a privacidade e a eficiência em transações blockchain, além de simplificar a construção de protocolos multiparte.
+					Contra: Embora sua adoção esteja crescendo, especialmente com a incorporação no Bitcoin via Taproot, ainda é relativamente novo comparado ao ECDSA, o que pode apresentar desafios iniciais de interoperabilidade e adoção.
+				
+			ZKP (Zero-Knowledge Proofs)
+			
+				Também conhecido como uma prova de conhecimento zero, é uma técnica de criptografia que permite a uma parte (o provedor) demonstrar para outra parte (o verificador) que ele possui informação secreta sem revelar a informação real. 
+				Na prova de conhecimento zero, o provedor é capaz de verificar se a informação fornecida pelo verificador é verdadeira, sem revelar a informação original ou qualquer outra informação secreta. 
+				Esta técnica é especialmente útil em situações em que uma parte deseja provar algo para outra parte, sem revelar informações confidenciais, como senhas ou informações financeiras.
+			
+				Zk-SNARKs
+				
+					Zk-SNARKs (Zero-knowledge Succinct Non-interactive Argument of Knowledge) é um algoritmo de criptografia que permite uma parte provar para outra parte que possui uma informação sem revelar a informação em si.
+					São baseados em provas de conhecimento zero (Zero-Knowledge Proof) e permitem que a parte que possui a informação se prove sem interagir com a outra parte.
+					
+						Pro: Permite a verificação de transações ou afirmações complexas de forma privada e eficiente, sem revelar nenhuma informação sobre a própria transação, essencial para aplicações que demandam privacidade absoluta.
+						Contra: Requer uma "cerimônia de confiança" para a geração de parâmetros criptográficos iniciais, o que pode introduzir riscos de segurança se os parâmetros não forem gerados de maneira segura e transparente.
+					
+				ZK-STARKs
+				
+					ZK-STARK (Zero-knowledge Succinct Trivial Argument of Knowledge) é uma melhoria de ZK-SNARKs, que permite uma parte provar para outra parte que possui uma informação, sem revelar a informação em si.
+					São mais eficientes que ZK-SNARKs e têm importantes aplicações em contextos de privacidade e segurança de informação, como Blockchain e Smart Contracts.
+				
+						Pro: Oferece todas as vantagens dos Zk-SNARKs, mas sem a necessidade de uma cerimônia de confiança, além de ser resistente a ataques de computadores quânticos, tornando-os mais seguros e futuramente compatíveis.
+						Contra: As provas geradas são significativamente maiores do que as dos Zk-SNARKs, o que pode impactar a eficiência em termos de armazenamento e transmissão de dados.
+					
+				PLONK
+				
+					PLONK, sigla para "Please, Lock up our Namespaces, Kid", é uma técnica de segurança usada em DNS (Sistema de Nomes de Domínio) que ajuda a impedir que uma entidade maliciosa redirecione o usuário para um servidor diferente daquele que o usuário pretendia acessar.
+					O PLONK envolve um registro DNS que contém a lista dos servidores que o usuário considera legítimos e os endereços de IP correspondentes.
+					Esse registro é usado para validar os servidores, impedindo que uma entidade maliciosa redirecione o usuário para um site malicioso.
+					
+						Pro: Simplifica a geração de provas zero-knowledge, permitindo a reutilização de um conjunto comum de parâmetros para múltiplas provas, o que melhora a eficiência e acessibilidade das ZKPs.
+						Contra: Embora mais eficiente e flexível, a complexidade técnica e o entendimento necessário para implementar e otimizar PLONK podem ser barreiras para alguns desenvolvedores e aplicações.
+					
+				BulletProofs
+				
+					BulletProofs (BP) é uma técnica de prova de conhecimento zero projetada para reduzir drasticamente o tamanho de uma prova, permitindo que um usuário certifique a validade de uma afirmação sem revelar qualquer informação confidencial.
+					BP é especialmente útil em contextos de criptografia, onde privacidade e segurança são concernes cruciais.
+				
+						Pro: Não requer uma cerimônia de configuração confiável e é mais eficiente em termos de tamanho de prova para certas aplicações, comparado aos Zk-SNARKs, o que é vantajoso para melhorar a privacidade e eficiência em blockchains.
+						Contra: A verificação das provas pode ser mais lenta do que em outros sistemas de ZKP, especialmente para provas maiores, o que pode limitar sua aplicabilidade em sistemas onde a velocidade de verificação é crítica.
+
+
+			Interações com as criptografias:
+			
+				const elliptic = require('elliptic');
+			
+				//Criar uma instancia da curva secp256k1
+				const ec = new elliptic.ec('secp256k1');
+				
+				//Gerar uma par de chaves (chave privada e chave pública)
+				const privateKey = ec.genKeyPair();
+			
+				//Obter a chave privada como uma string hexadecimal
+				const privateKey = keyPair.getPrivate('hex');
+			
+				// Obter a chave pública como uma string hexagonal
+				const publickey = keyPair.getPublic('hex');
+				
+				console.log('Chave privada:', privateKey);
+				console.log('Chave privada:', publicKey);
+			
+				//Assinar uma mensagem com a chave privada
+				const message = 'Nearx';
+				const signature = keyPair.sign(message);
+
+				//Verificar a assinatura com a chave pública correspondente
+				console.log('Assinatura válida?', keyPair.verify("nearX, signature));
