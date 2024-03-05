@@ -1,0 +1,191 @@
+Aula 6
+
+	# EVM
+	
+	# Ethereum Improviment Proposal
+		
+		Uma Proposta de Melhoria de Ethereum (EIP) é um documento que sugere mudanças ou adições ao protocolo Ethereum.
+		Essas propostas podem incluir mudanças na própria blockchain de Ethereum, bem como mudanças na maneira como os smart contracts funcionam na rede Ethereum.
+		Após uma EIP ser proposta, ela é sujeita ao debate e discussão dentro da comunidade Ethereum, antes de ser implementada.
+		O processo para enviar e revisar EIPs foi projetado para garantir que quaisquer mudanças feitas na rede Ethereum sejam feitas de maneira responsável e aberta, e com os melhores interesses da comunidade em mente.
+	
+			- ERC 20:
+			
+				Transferibilidade: Tokens ERC20 podem ser enviados de um endereço de Ethereum para outro.	
+				Dividendos: Tokens ERC20 podem ser usados para pagar dividendos ou outras recompensas para os detentores de tokens.	
+				Força: Tokens ERC20 podem ter uma força fixa ou variável, dependendo do contrato do token.	
+				Funcionalidade: Tokens ERC20 podem ter funcionalidade adicional, como direitos de voto ou a capacidade de gatilhar funções de smart contracts.
+					
+			- ERC 721
+			
+				ERC721 define as regras e limitações para a criação e interação com NFTs (Non-Fungible Tokens) na Ethereum.
+
+					Algumas das características-chave dos NFTs ERC721 incluem:
+
+						Transferibilidade: NFTs ERC721 podem ser enviados de um endereço de Ethereum para outro.
+						Propriedade exclusiva: NFTs ERC721 são únicos e não podem ser substituídos por outras versões.
+						Raridade: NFTs ERC721 podem ter raridade variável, o que significa que alguns NFTs podem ser mais raros que outros.
+						Funcionalidade: NFTs ERC721 podem ter funcionalidade adicional, como direitos de votação ou a capacidade de gatilhar funções de smart contracts.
+						
+							Exemplos populares de NFTs ERC721 incluem CryptoPunks, Bored Apes, e Cryptokitties.
+				
+			- ERC 1155
+			
+				Algumas das características-chave dos tokens multimodeis ERC-1155 incluem:
+
+					Transferibilidade: Tokens multimodeis ERC-1155 podem ser enviados de um endereço de Ethereum para outro.
+					Propriedade exclusiva: Tokens multimodeis ERC-1155 são únicos e não podem ser substituídos por outras versões.
+					Raridade: Tokens multimodeis ERC-1155 podem ter raridade variável, o que significa que alguns tokens podem ser mais raros que outros.
+					Modos de uso: Tokens multimodeis ERC-1155 podem ter vários modos de uso disponíveis, incluindo usos financeiros, utilitários e de colecionador.
+					
+						Exemplos populares de tokens multimodeis ERC-1155 incluem Axie Infinity, God's Unchained e Illuvium.
+				
+			- ERC 1559
+				
+				Essa EIP introduziu uma nova maneira de gerenciar as taxas de transação na rede Ethereum, projetada para tornar as taxas mais previsíveis e estáveis ao longo do tempo.
+				
+					O padrão de token ERC-1559 define as regras e limitações para a criação e interação com tokens deflacionários na Ethereum.
+					Essas regras incluem como os tokens deflacionários são usados, como eles são transferidos e que dados eles contêm.
+
+						Algumas das características-chave dos tokens deflacionários ERC-1559 incluem:
+
+							Transferibilidade: Tokens deflacionários ERC-1559 podem ser enviados de um endereço de Ethereum para outro.
+							Deflação: Tokens deflacionários ERC-1559 são projetados para ter uma oferta deflacionária, o que significa que a oferta de tokens é reduzida ao longo do tempo.
+							Taxas de transação: Tokens deflacionários ERC-1559 são usados para pagar taxas de transação na Ethereum.
+							Consumo de gas: Tokens deflacionários ERC-1559 são usados para pagar pelos serviços de gas na Ethereum.
+							
+								Exemplos populares de tokens deflacionários ERC-1559 incluem Ethereum (ETH), Uniswap (UNI), e AAVE.
+				
+			- ERC 2535
+				
+				 O padrão de token ERC-2535 define as regras e limitações para a criação e interação com tokens de seguro na Ethereum.
+				 Essas regras incluem como os tokens de seguro são usados, como eles são transferidos e como são gerenciados em caso de perdas.
+
+						Algumas das características-chave dos tokens de seguro ERC-2535 incluem:
+
+							Transferibilidade: Tokens de seguro ERC-2535 podem ser enviados de um endereço de Ethereum para outro.
+							Gerenciamento de perdas: Tokens de seguro ERC-2535 são gerenciados por smart contracts, que podem ser usados para gerenciar perdas ou riscos associados à posse de tokens de seguro.
+							Rascunho: Tokens de seguro ERC-2535 podem ser usados como rascunhos para o seguro tradicional, fornecendo uma maneira mais eficiente e descentralizada de gerenciar riscos associados à posse de tokens de seguro.
+							
+								Exemplos populares de tokens de seguro ERC-2535 incluem Augur (REP), Gnosis (GNO), e Nexus Mutual.
+				
+			- ERC 3675
+			
+				O padrão de token ERC-3675 define as regras e limitações para a criação e interação com tokens de recompensa na Ethereum.
+				Essas regras incluem como os tokens de recompensa são usados, como eles são transferidos e que dados eles contêm.
+				
+					Algumas das características-chave dos tokens de recompensa ERC-3675 incluem:
+
+						Transferibilidade: Tokens de recompensa ERC-3675 podem ser enviados de um endereço de Ethereum para outro.
+						Gerenciamento de recompensas: Tokens de recompensa ERC-3675 são gerenciados por smart contracts, que podem ser usados para gerenciar recompensas ou incentivos associados a tarefas ou objetivos específicos.
+						Escopiamento de tokens: Tokens de recompensa ERC-3675 podem ser escopados ou replicados, o que permite que uma quantidade limitada de tokens seja usada para recompensar uma grande quantidade de usuários.
+				
+							Exemplos populares de tokens de recompensa ERC-3675 incluem KILT Protocol, e GIVVR.
+				
+			- ERC 4337
+			
+				 O padrão de token ERC-4337 define as regras e limitações para a criação e interação com tokens atrelados a produtos na Ethereum.
+				 Essas regras incluem como os tokens atrelados a produtos são usados, como eles são transferidos e que dados eles contêm.
+			
+					Algumas das características-chave dos tokens atrelados a produtos ERC-4337 incluem:
+
+						Transferibilidade: Tokens atrelados a produtos ERC-4337 podem ser enviados de um endereço de Ethereum para outro.
+						Atribuição de produto: Tokens atrelados a produtos ERC-4337 são atrelados a produtos específicos, como itens de colecionador ou produtos de consumo.
+						Interoperedabilidade: Tokens atrelados a produtos ERC-4337 são interoperáveis com outras aplicações blockchain, como dApps ou smart contracts.
+						
+							Exemplos populares de tokens atrelados a produtos ERC-4337 incluem CryptoKitties, e Superrare.
+			
+			- ERC 3074
+			
+				Essa EIP introduziu o 'Ethereum Name Service', um sistema de domínio descentralizado para sites baseados em Ethereum.
+				O padrão de token ERC-3074 define as regras e limitações para a criação e interação com tokens de valor fixo na Ethereum
+				 
+					Algumas das características-chave dos tokens de valor fixo ERC-3074 incluem:
+
+					Transferibilidade: Tokens de valor fixo ERC-3074 podem ser enviados de um endereço de Ethereum para outro.
+					Valores fixos: Tokens de valor fixo ERC-3074 possuem valores fixos e limitados, em oposição a valores variáveis que podem ser impactados por fatores externos.
+					Controle de emissão: Tokens de valor fixo ERC-3074 podem ter sua emissão controlada, o que permite que os desenvolvedores controlem a quantidade de tokens emitidos e em circulação.
+					
+						Exemplos populares de tokens de valor fixo ERC-3074 incluem MakerDAO (MKR), e Compound (COMP).
+		
+	# Blockchain EVM-Based
+	
+		- DREX
+		- Polygon
+		- Optimism
+		- Binance
+		- Avalanche
+		- Fanton
+		- Harmony
+		- Arbitrum
+		- Moonbeam
+		- Acala
+		
+	# Tipos de Dados
+		
+		- uint = inteiro sem assinatura, numeros de 0 at[e onde o index suport
+		- int  = numeros negativos e negativos
+		- bool = boliano (verdadeiros ou falsos)
+		- address = endereços
+		- string = representa palavras, frases, textos, nomes, endereços.
+		- bytes  = 
+		
+	# Funções Modificadores:
+		
+		- View - (funções que leem dados da blockchain)
+			
+			function getNumber() public view returns(uint8) {
+				return number;
+			}
+			
+		- Pure - (usa em uma função que não le dados da Blockchain)
+		
+			function setNumber(uint x, uint y) public pure returns(uint) {
+				return x + y;
+			}
+		
+		- Payable - (signifca que uma pessao pode enviar eth para este contrato)
+		
+			function deposit() public payable {
+				msg.value
+			}
+			
+
+	Lets Fuck Coding
+				
+		- Counter - (Conteudo abordado na Aula 6 - Semana 2)
+			Uma variável de contador é um campo de dados em um smart contract que armazena um número inteiro que representa um contador. 
+			Os desenvolvedores podem aumentar ou diminuir esse número usando funções específicas. 
+			Os contadores são geralmente usados para manter a contagem de algum evento, como, por exemplo, o número de transações processadas por um contract.
+			
+				Exemplo de aplicação:
+				
+					//SPDX-LcenceIdentifier: MIT 
+					pragma solidity ^0.8.20;
+					
+					contract Counter {
+						uint8 public number;
+						
+						function setNumber(uint8 newnumber ) public {
+							number = newNumber;
+						}
+						
+						function incremente() public{
+							number++;
+						}
+						
+						function getNumber() public view returns(uint8) {
+							return number;
+						}
+						
+						
+			
+		- CRUD - (Conteudo abordado na Aula 6 - Semana 1)
+			"CRUD" é uma sigla para "create, read, update, delete", que representam as operações básicas de um banco de dados.
+			Em Solidity, os comandos CRUD são usados para criar, ler, atualizar e excluir dados armazenados em smart contracts.
+			Os desenvolvedores usam essas operações para interagir com os dados armazenados nos smart contracts e para tornar os contratos mais utéis para os usuários finais.
+			
+	Duvidas:
+	
+		Como calcular e limitar o gas
+			
