@@ -1,0 +1,100 @@
+Aula 5
+
+	Smartcontract life cycle 
+	
+			- Ideia
+			
+				Contrato:	
+					- armazenar um valor: (true, false)
+					- qualquer pessoa possa ver o valor
+					- qualquer pessoa possa alterar esse valor
+					- o valor deve sempre ser(true, false)
+					
+			- Testes (TDD)
+				
+				TDD (Test-Driven Development) é uma abordagem de desenvolvimento em que os testes são escritos antes do código, com o objetivo de garantir que o código seja robusto e funcione como esperado.
+
+					Para fazer TDD em Solidity, você pode seguir os passos a seguir:
+
+						Escolha um caso de utilização para o seu smart contract: 
+							Comece escolhendo um caso de utilização em mente, e anote as funcionalidades que você gostaria que o seu smart contract tivesse.
+							
+						Escrita do teste de unidade: 
+							Escreva um teste de unidade para verificar que o seu smart contract está funcionando corretamente. 
+							Esse teste deve ter o mínimo de código necessário para cobrir a funcionalidade que você escolheu.
+							
+						Escrita do código: 
+							Utilizando os testores de unidade como guia, escreva o código para o seu smart contract. 
+							Certifique-se de que o seu código atenda aos requisitos definidos no seu teste de unidade.
+							
+						Teste: 
+							Execute os seus testes para verificar que o seu smart contract está funcionando corretamente e atende aos requisitos definidos.
+							
+							Repetição: 
+								Volte ao passo 2 e repita o processo até que todos os requisitos para o seu smart contract sejam completados.
+								
+					Ao seguir esses passos, você estará usando TDD para garantir que seu smart contract seja bem testado e funcione corretamente. 
+					Lembre-se de que, enquanto o TDD pode ser mais lento no começo, ele pode ajudar a evitar problemas e erros no seu código no futuro.
+					
+			- Contrato
+			
+			- Auditória	 
+				
+				A auditoria em Solidity é o processo de verificação da segurança dos códigos escritos na linguagem Solidity. 
+				Em Solidity, códigos são escritos para ser executados na blockchain, e essas contracts podem conter vulnerabilidades de segurança que podem levar a perdas financeiras, roubos ou outros problemas de segurança. 
+				Por isso, é importante que os códigos sejam auditados para garantir que sejam seguros e confiáveis.
+				A auditoria em Solidity costuma envolver a verificação do código manualmente, utilizando ferramentas e técnicas específicas para achar possíveis vulnerabilidades. 
+				Algumas das técnicas usadas incluem a análise estatística automática, o teste de unhas pretas e a checagem de segurança de código fonte.
+
+				Em resumo, a auditoria em Solidity é um processo importante que pode ajudar a garantir que os códigos em Solidity sejam confiáveis e seguros, ajudando a evitar possíveis problemas de segurança e perdas financeiras futuros.
+				
+			- Deploy Local
+				
+				O primeiro passo é o Deploy Local, que é a implantação do smart contract pelo desenvolvedor localmente, na própria máquina do usuário.
+				Essa implementação é usada para testar o smart contract e garantir que ele esteja funcionando segundo o planejado.
+				
+			- Deploy Testnet
+				
+				A próxima etapa é o Deploy Testnet, que é a implantação do smart contract em uma rede de teste, também conhecida como testnet.
+				A Testnet é uma rede separada do Mainnet, projetada para testar aplicações sem influência nas redes mais importantes da Ethereum.
+				
+			- Deploy Mainnet
+			
+				A última etapa é o Deploy Mainnet, que é a implantação do smart contract na rede principal da Ethereum.
+				Esse é o passo final para lançar o contrato na rede e torná-lo disponível para o público em geral.
+			
+		Lets Fuck Coding
+		
+			- Flipper - (Conteudo abordado na Aula 5 - Semana 1)
+				Flipper é uma ferramenta de desenvolvimento de smart contracts criada para trabalhar com Solidity e Ethereum.
+				Ele permite que os desenvolvedores criem, testem e implantem smart contracts sem precisar escrever manualmente o código. 
+				Ao usar o Flipper, os desenvolvedores podem criar e testar smart contracts de forma rápida e eficiente, sem precisar escrever código manualmente.
+			
+			- Counter - (Conteudo abordado na Aula 6 - Semana 2)
+				 Uma variável de contador é um campo de dados em um smart contract que armazena um número inteiro que representa um contador. 
+				 Os desenvolvedores podem aumentar ou diminuir esse número usando funções específicas. 
+				 Os contadores são geralmente usados para manter a contagem de algum evento, como, por exemplo, o número de transações processadas por um contract.
+			
+			- CRUD - (Conteudo abordado na Aula 6 - Semana 1)
+				"CRUD" é uma sigla para "create, read, update, delete", que representam as operações básicas de um banco de dados.
+				Em Solidity, os comandos CRUD são usados para criar, ler, atualizar e excluir dados armazenados em smart contracts.
+				Os desenvolvedores usam essas operações para interagir com os dados armazenados nos smart contracts e para tornar os contratos mais utéis para os usuários finais.
+			
+			
+		Links para instalação: https://getfoundry.sh/
+				
+					For Windows: "https://gitforwindows.org/" and "https://learn.microsoft.com/en-us/windows/wsl/install"
+						Após instalados  os 2 itens acima abra o CMD e insira a instalação do Foundry
+							Comando: "npm install -g foundry"
+					
+						Foundry:
+							Forge Overview: Gerencia o Projeto.
+							Cast Overview: Serve para conectara/interagir com a blockchain ou seus contratos.
+							Anvil Overview: Uma blockchain, como se fosse vervadeira, uma simulação.
+							Chisel Overview: Teste, onde pode realizar testes e interações de contratos.
+						
+	Tipos de Funções Visibilidade:
+			function getValue() external returns(bool) { //funções feitas/chamadas char de for do contrato;
+			function getValue() internal returns(bool) { //funções feitas/interagida internamente do contrato;
+			function getValue() public 	returns(bool) {	 //funções public permite que qualquer um consiga chamar essa função;
+			function getValue() private returns(bool) {  //funções permite que so este contrato chame essa função;
