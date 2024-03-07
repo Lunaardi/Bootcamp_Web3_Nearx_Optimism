@@ -107,19 +107,28 @@ Aula 6
 					Controle de emissão: Tokens de valor fixo ERC-3074 podem ter sua emissão controlada, o que permite que os desenvolvedores controlem a quantidade de tokens emitidos e em circulação.
 					
 						Exemplos populares de tokens de valor fixo ERC-3074 incluem MakerDAO (MKR), e Compound (COMP).
+			
+			- ERC 404
+			
+				O padrão do ERC-404 é um contrato de token que fornece uma maneira simples de representar e transferir ativos ou colecionáveis digitais que têm um tipo ou propriedade associados a eles.
+				Ele é semelhante ao ERC-721 (Non-Fungible Tokens ou NFTs), mas em vez de representar ativos não fungíveis únicos, ele representa ativos digitais fungíveis que possuem propriedades idênticas.
+					Uma coisa importante a dizer é que o ERC-404 é relativamente novo e pode não haver muitos ferramentas ou serviços que o suportem ainda. 
+					Contudo, o padrão está sendo ativamente trabalhado e é provável que se torne cada vez mais adoptado quanto mais o ecossistema da Ethereum continuar a crescer.
 		
 	# Blockchain EVM-Based
 	
-		- DREX
-		- Polygon
-		- Optimism
-		- Binance
-		- Avalanche
-		- Fanton
-		- Harmony
-		- Arbitrum
-		- Moonbeam
-		- Acala
+		Blockchain EVM-based é uma tecnologia baseada na Ethereum Virtual Machine (EVM) que permite a construção de aplicações distribuídas e transparentes, bem como a execução de contratos inteligentes de maneira segura e eficaz
+	
+			- DREX
+			- Polygon
+			- Optimism
+			- Binance
+			- Avalanche
+			- Fanton
+			- Harmony
+			- Arbitrum
+			- Moonbeam
+			- Acala
 		
 	# Tipos de Dados
 		
@@ -188,4 +197,14 @@ Aula 6
 	Duvidas:
 	
 		Como calcular e limitar o gas
+		
+			Para calcular o gás, os desenvolvedores precisam escrever uma formulação de gás com base na complexidade e duração esperada da transação. 
+			Além disso, o gás pode ser limitado para evitar que transações ou contratos inteligentes consumam recursos demais, já que isso poderia levar a um sobrecarregamento do sistema e a uma queda na performance da rede.
+
+				Para limitar o gás, os desenvolvedores podem usar techniques, como:
+
+					Limitar o número máximo de instruções que podem ser executadas em uma transação;
+					Limitar o uso de recursos computacionais, como armazenamento ou processamento;
+					Estabelecer uma taxar para o uso do gás, de forma que quem pagar mais possa executar mais operações;
+					Implementar técnicas de gerenciamento de gás, como o uso de diferentes níveis de prioridade para transações e contratos inteligentes.
 			
