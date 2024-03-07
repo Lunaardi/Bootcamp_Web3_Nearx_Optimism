@@ -1,0 +1,68 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Token {
+
+	string public name;
+	string public symbol;
+	uint8 public decimal;
+	uint256 public totalSupply;
+
+	event Transfer(address from, address _to, uint256 amount);
+	event Approval(address _owner, address _to, uint256 amount);
+
+	mapping(address => uint256) balances;	
+	mapping(address => mapping(address => uint256)) allowances;
+	
+
+
+
+	function balanceOf(address _owner) public view returns (uint256 balances) {
+		uint256 balancerOfUser = balances[_owner];
+		return balanceOfUser;
+	}
+
+
+
+	function transfer(address _to, uint256 _value) public returns (bool) {
+		require(balances[msg.sender] >= _value, "INSULFICIENTE_AMOUNT");
+			
+		balances[_to] += _value;
+		balances[msg.sender] -= _value
+			
+		emit Transfer(msg.sender, _to, _value);
+		return true;
+	}
+
+
+	function approve(address _spenser, uint256 _value) public {
+		allowances[msg.sender][_spender] = _value;
+		Approval(address _spender, uint256 amount);
+	}
+
+
+	function transferFrom(address _from, address _to, uint256 _value) public {
+		require(allowances[_from][msg.sender] >= _value, "INSUFFICIENT_ALLOWANCE");
+			
+		balances[_from] -= _value;
+		balances[_to] += _value;
+		
+		emit Transfer(_from, _to, _value);
+	}
+
+
+	function allowances(address _owner, address _spender) public view returns (uint256) {
+		return allowances[_owner][_spender]
+	}
+
+
+	constructor() {
+		name = "Analysis Cript Hash";
+		Symbol = "ACH";
+		decimal = 18;
+			
+		totalSupply = 10000 * 10e18;
+		balances[msg.sender] = totalSupply;
+			
+	}
+}	

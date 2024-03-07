@@ -1,0 +1,144 @@
+AULA 7
+
+	Analisando contratos ERC 20
+
+		EIP-20 é um padrão de token de Ethereum (ERC-20) que fornece a capacidade de criar tokens personalizados com a possibilidade de personalizar as propriedades de segurança, como a autorização de transferência.
+
+		Os tokens EIP-20 são armazenados na blockchain de Ethereum e podem ser transacionados ou transferidos pelas pessoas ou por outros programas usando smart contracts. 
+		Os tokens EIP-20 seguem um padrão específico para garantir que sejam compatíveis com a blockchain de Ethereum e que possam ser transacionados com outras aplicações e serviços baseados em Ethereum.
+			Além disso, os tokens EIP-20 são criados a partir do Smart Contract ERC-20, que define um contrato inteligente que controla o comportamento e a funcionalidade dos tokens.
+			Os tokens EIP-20 podem ser usados para representar vários tipos de ativos digitais, como criptomoedas, pontos de recompensa, tokens de utilidade, entre outros.
+
+// Cria um Token
+contract Token {
+
+// Define um nome, simbolo e casas decimais do token que será publicos essas informações
+	string public name;
+	string public symbol;
+	uint8 public decimal;
+	uint256 public totalSupply;
+
+// event Transfer
+	// Ele contém informações importantes sobre a transação, como os endereços do emissor e do destinatário, a quantidade de tokens transferida e a razão da transação.	
+	// É um mechanismo que é disparado quando algo aconteçe no sistema, como uma transferência de tokens. 
+	// A função Transfer disparada quando acontecer uma transferência de tokens, é passada três parâmetros: endereço de quem vai enviar os tokens, endereço de quem vai receber os tokens e a quantidade de tokens que será enviada.
+		
+		event Transfer(address from, address _to, uint256 amount);
+	
+// event Approval	
+	// É importante, pois permite que uma pessoa autorize outra pessoa para usar os tokens em seu nome. 
+	// Para fazer isso, o proprietário precisará emitir essa autorização com o evento "Approval". Depois que ele fizer isso, o benefício poderá usar esses tokens em seu nome.
+	// Para disparar o evento, é necessário passar o endereço do proprietário, o endereço do beneficiário e a quantidade de tokens que o proprietário deseja transferir. 
+	// É importante lembrar que a transferência não ocorre diretamente, apenas a autorização para a transferência.
+
+		event Approval(address _owner, address _to, uint256 amount);
+
+// mapping
+	// Cada endereço em Ethereum é associado uma chave de endereço e um saldo, que representa a quantidade de tokens que ele tem naquele momento.
+	// A estrutura de mapeamento balances mapeia a chave de endereço para o saldo correspondente.
+	// Como a quantidade de tokens no saldo pode mudar com o tempo, a estrutura de mapeamento faz parte do estado do contrato.
+	// Ela é usada para recuperar ou atualizar o saldo de um endereço específico de uma forma muito eficiente.
+	
+		mapping(address => uint256) balances;
+		
+			// | key											| valor		|	
+			// | address										| uint256	|
+			// | 0x5FbDB2315678afecb367f032d93F642f64180aa3		| 0			|
+			// | 0x5FbDB2315678afecb367f032d93F642f64180aa3		| 1000		|
+
+// mapping
+	// É usada para armazenar duas mapeamentos em Solidity. 
+	// O primeiro mapeamento armazena o endereço do proprietário de um contrato, enquanto o segundo mapeamento armazena o endereço de um beneficiário.
+	// A quantidade de tokens que o proprietário está autorizando o beneficiário a usar é armazenada nas posições de ambos os mapeamentos, que correspondem aos endereços do beneficiário e do proprietário, respectivamente.
+	// Por exemplo, se um proprietário está autorizando um beneficiário a usar 10 tokens, a posição do endereço do beneficiário na posição do proprietário tem o valor 10.
+	// Entretanto, se um segundo beneficiário é autorizado a usar mais 5 tokens, a posição do endereço do segundo beneficiário na posição do proprietário tem o valor 5.
+
+		mapping(address => mapping(address => uint256)) allowances;
+	
+			// | key			| key/valor		| valor		|
+			// | address		| address		| uint256	|
+			// | 0x5Fb..0aa3	| 0x7Sf..5dT4	| 10		|
+			// | 0x5Fb..0aa3	| 0x7Sf..BBBB	| 1			|
+
+// balanceOf
+	// A função balanceOf é um método que retorna o saldo atual de um endereço especificado na blockchain de Ethereum.
+	// Ela é utilizada para recuperar o saldo de um endereço especificado e retorná-lo ao usuário.
+	// A função recebe o endereço do usuário como parâmetro e verifica a tabela do saldos, que armazena a chave de endereço do usuário junto com o seu saldo atual na blockchain.
+	// Em seguida, a função retorna o saldo na posição especificada.
+
+		function balanceOf(address _owner) public view returns (uint256 balances) {
+			uint256 balancerOfUser = balances[_owner];
+			return balanceOfUser;
+		}
+
+// transfer
+	// Ela define uma função que permite a transferência de tokens de um endereço para outro endereço.
+	// Quando o método "transfer" é invocado, primeiramente ele verifica se o saldo do dono do endereço enviado é suficiente para a transferência de moedas.
+	// Se sim, ele atualiza os saldos do destinatário e do dono do endereço enviado. Em seguida, emite um evento de transferência, que é disparado a cada transação de moedas que ocorre na rede de Ethereum.
+	// Além disso, o método retorna o resultado da transação, que é um booleano, que indica se a transferência foi bem sucedida ou não.
+
+		function transfer(address _to, uint256 _value) public returns (bool) {
+			require(balances[msg.sender] >= _value, "INSULFICIENTE_AMOUNT");
+			
+			balances[_to] += _value;
+			balances[msg.sender] -= _value
+			
+			emit Transfer(msg.sender, _to, _value);
+			return true;
+		}
+
+// approve
+	// Ela permite que o dono do contrato (que é o usuário que está executando a função) aproveite uma transferência de tokens para um endereço especificado.
+	// A função recebe dois parâmetros: o endereço do beneficiário e a quantidade de tokens que o beneficiário será autorizado a utilizar.
+	// A função, em seguida, atualiza o valor dos saldos em uma estrutura de mapeamento chamada "allowances", que é utilizada para armazenar os endereços e saldos dos beneficiários.
+	// Depois que os saldos forem atualizados, a função emite um evento de autorização de transferência, que é disparado a cada transação de transferência de tokens que ocorre na rede de Ethereum.
+		
+		function approve(address _spenser, uint256 _value) public {
+			allowances[msg.sender][_spender] = _value;
+			Approval(address _spender, uint256 amount);
+		}
+
+// transferFrom
+	// permite que uma pessoa transferir tokens de um endereço para outro endereço.
+	// A função recebe três parâmetros: o endereço do proprietário dos tokens, o endereço do beneficiário que receberá os tokens e a quantidade de tokens que será transferida.
+	// A função, em seguida, verifica se a pessoa que está transferindo os tokens tem o direito de fazê-lo.
+	// Para isso, a função verifica se a quantidade de tokens que a pessoa está autorizada a transferir é maior ou igual à quantidade de tokens que ela deseja transferir.
+	// Se a pessoa tem o direito de transferir os tokens, a função atualiza os saldos em duas estruturas de mapeamento: "balances", que armazena o saldo atual de cada endereço, e "allowances", que armazena os endereços e saldos dos beneficiários autorizados a transferir tokens.
+	// Em seguida, a função emite um evento de transferência de tokens, que é disparado a cada transação de tokens que ocorre na rede de Ethereum.
+			
+		function transferFrom(address _from, address _to, uint256 _value) public {
+			require(allowances[_from][msg.sender] >= _value, "INSUFFICIENT_ALLOWANCE");
+			
+			balances[_from] -= _value;
+			balances[_to] += _value;
+		
+			emit Transfer(_from, _to, _value);
+		}
+
+// allowances
+	// Esse é um exemplo de código em Solidity que define uma função chamada "allowances". 
+	// Ela permite que o dono do contrato (que é o usuário que está executando a função) consulta o valor atualizado de uma estrutura de mapeamento chamada "allowances".
+	// A função recebe dois parâmetros: o endereço do dono do contrato e o endereço do beneficiário que será consultado.
+	// Em seguida, a função retorna o valor atualizado na estrutura de mapeamento, que armazena o valor atualizado do saldo autorizado para transferências de tokens a cada endereço.
+	// Assim, se o dono do contrato deseja saber qual o saldo autorizado de um determinado endereço de beneficiário, ele pode executar essa função e receber o valor atualizado.
+		
+		function allowances(address _owner, address _spender) public view returns (uint256) {
+			return allowances[_owner][_spender]
+		}
+
+// constructor	
+	// Define o construtor de uma classe de token. 
+	// No construtor, são especificadas algumas variáveis importantes do token, como o nome, símbolo e quantidade de casas decimais do token.
+	// A variável "totalSupply" estipula o número total de tokens emitidos para a rede de Ethereum.
+	// Em seguida, a função "balances" é invocada e é passado o endereço do contratante que está executando a função.
+	// O valor "totalSupply" é então armazenado na estrutura de dados "balances", associada ao endereço do contratante.
+
+		constructor() {
+			name = "Analysis Cript Hash";
+			Symbol = "ACH";
+			decimal = 18;
+			
+			totalSupply = 10000 * 10e18;
+			balances[msg.sender] = totalSupply;
+			
+		}
