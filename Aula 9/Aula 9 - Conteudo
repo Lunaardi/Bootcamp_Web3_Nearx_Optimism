@@ -18,33 +18,102 @@ Vetores de Ataque (Attack Vectors)
 
     Flash Loans
 
+        Flash Loans são uma maneira de emprestar dinheiro da blockchain por um curto período de tempo, tipicamente apenas tempo suficiente para fazer uma troca ou transação rápida. 
+        Eles podem ser usados de diversas maneiras, incluindo aproveitar oportunidades de arbitragem, fazer trocas alavancadas ou aumentar a alavancagem de outras maneiras. 
+        Contudo, eles também são uma ferramenta arriscada e avançada e devem ser usados com cuidado, somente por aqueles com um forte entendimento de blockchain e de contratos inteligentes.
+
     Reward Manipulation
+
+        Manipulation de recompensas é um termo usado no desenvolvimento de blockchain e de contratos inteligentes para descrever a prática de manipulação artificial de recompensas ou incentivos em uma aplicacao ou protocolo descentralizados para obter uma vantagem injusta.
+        Isso pode ser feito por meio de diversos métodos, tais como explorar vulnerabilidades, se envolver em conspirações com outros participantes, ou manipular a própria estrutura de recompensas. 
+        A manipulação de recompensas pode prejudicar a saúde geral e a estabilidade de uma rede e levar à perda significativa de valor para aqueles envolvidos. 
+        É importante para os desenvolvedores planejarem e testarem cuidadosamente sistemas de recompensas com o objetivo de prevenir a manipulação de recompensas.
 
     Stolen Private Keys
 
+        A expressão em inglês "stolen private keys" se refere a uma situação em que o segredo do titular da chave privada é roubado ou violado.
+        Isso pode colocar em risco a segurança das criptomoedas ou outros ativos armazenados utilizando essa chave. 
+        Em caso de suspicion de roubo de private keys, deve-se tomar medidas para proteger os ativos e, caso necessário, notificar as autoridades correspondentes.
+
     Access Control
+
+        Em segurança da informação, o controle de acesso ou acesso controlado (do inglês access control) é o processo para limitar o acesso a recursos, como arquivos ou informações, a pessoas, grupos ou sistemas com diferentes níveis de permissões. 
+        Esse controle pode ser realizado de forma manual, utilizando senhas ou permissões para accessar certos recursos, ou de forma automatizada, utilizando software para gerenciar as permissões dos usuários.
+        O acesso controlado é importante para a segurança da informação, pois ajuda a prevenir o acesso indesejado ou não autorizado dos usuários aos recursos.
+
 
     Replay Attacks
 
+        Um ataque de Replay é uma técnica que envolve a re-transmissão de mensagens de rede ou outros dados de forma insegura.
+        Essa técnica pode ser utilizada para executar repetidamente ações indesejadas, como a execução de transações financeiras ou acessos a sistemas.
+        A prática é tipicamente aplicada por hackers como meio de se apoderar de contas, acessar sistemas de segurança ou obter informações confidenciais.
+        Por essa razão, é importante a utilização de mecanismo de segurança, como autenticação e criptografia, para evitar ou detectar ataques de Replay.
+
     Function Parameter Validation
+
+        Em programação, validacion de parametros de funções é um processo pelo qual os dados enviados para a função são verificados para garantir que sejam adequados e seguro para uso. 
+        Isso geralmente é realizado por meio de checks e testes em diferentes situações, como verificação do tipo de dado, verificação de valores limite em ranges aceitáveis, checagem de dados para evitar injecção de SQL e verificação de chaves estrangeiras para garantir a integridade de dados. 
+        A validação de parametros é uma prática importante para garantir a confiabilidade e segurança do código.
 
     Misconfiguration
 
+        Misconfiguration, ou falha de configuração em português, é uma situação em que uma aplicação ou serviço é configurado de maneira incorreta.
+        Isso pode levar a brechas de segurança, problemas de confiança e até mesmo a interrupção do serviço.
+        O problema geralmente surge devido a erros de digitação ou falta de conhecimento sobre o sistema.
+        É importante que os desenvolvedores e administradores de sistemas estejam cientes das configurações aplicadas e as revistam regularmente para garantir a segurança do sistema.
+
     Governance
+
+        A governança em blockchain se refere às práticas e mecanismos para garantir a integridade, transparência, e qualidade dos processos de um sistema de blockchain. 
+        Isso inclui a forma como as mudanças são implementadas, quem tem o direito de participar nos processos de discussão, como as decisões são tomadas, como os conflitos são resolvidos, como os dados são coletados e usados. Uma boa governança em blockchain é fundamental para garantir a segurança, a eficiência e a confiança na tecnologia.
 
     DelegateCalls
 
+        Delegate Call é um padrão em Solidity onde um contrato delega a execução de uma chamada de método determinada para outro contrato.
+        Ele é uma forma de um contrato chamar um método em outro contrato sem realmente enviar a chamada para a rede, o que pode economizar gás e aumentar a eficiência.
+        Em uma chamada de delegado, o contrato que iniçia a chamada especifica o endereço do contrato destino, dados e assinatura de função a ser executada, e então a executa localmente, atualizando geralmente seu próprio estado de acordo com isso.
+        É um padrão frequentemente usado em aplicações descentralizadas e pode ser uma ferramenta poderosa para reduzir o custo de transações.
+
     Precision Rounding Errors
+
+        Arredondamento de precisão ou erro de arredondamento em precisão é um problema comum em computação que pode ocorrer quando números decimais são arredondados para menos números inteiros.
+        O arredondamento pode ser feito para diferentes níveis de precisão, e ao fazê-lo, pode ter uma pequena perda de precisão. 
+        O erro de arredondamento de precisão é o erro resultante deste processo, que pode afetar a precisão final de resultados de cálculos. 
+        O arredondamento de precisão pode ser problemático quando se trata de transações financeiras e de dados de alta precisão, como em ciência ou engenharia.
 
     Gas Griefing Attack
 
+        Um ataque de gas griefing é uma técnica maliciosas em blockchain onde um atacante enche a memória do bloque com dados supérfluos, causante do uso de gás/gas.
+        Este ataque tem como objetivo esgotar o gás disponível para as transações legítimas, o que torna impossível a execução dessas transações. É importante ter em mente que esse tipo de ataque é contra os princípios da descentralização e é contrário às políticas da maioria das redes blockchain, sendo considerado uma prática ilegal e punível.
+
     Rug Pull
+
+        Um "rug pull" é um tipo de golpe que ocorre em criptomoedas, especialmente em projetos de criptomoedas recém-lançados.
+        Nele, os fundadores de um projeto de criptomoedas atraem investidores, convencendo-os a comprar tokens ou moedas digitais, prometendo um potencial de retorno alto.
+        No entanto, depois de atraírem bastante investimento, os fundadores desaparecem subitamente e vendem todas as suas moedas digitais, deixando os investidores com um produto sem valor.
+        É importante lembrar que o mercado de criptomoedas é altamente volátil e que existe um risco significativo associado à compra ou venda de tokens ou moedas digitais.
 
     Logic Error
 
+        Um erro lógico em programação é um erro em um programa ou código que faz com que ele execute de forma inesperada ou correta.
+        Isso pode ser causado por uma variety de fatores, incluindo problemas de sintaxe, lógica errada ou falta de teste adequado.
+        Os erros lógicos são um problema comum em programação, e é importante ter uma abordagem metódica e sistemática para resolvê-los.
+        Isso pode ser feito testando o código com casos de teste, seguindo uma abordagem de top-down ou bottom-up, ou usando diferentes ferramentas de depuração e análise de código.
+
     Reentrancy
 
+        Reentrancy é um conceito em software que se refere à situação em que uma função pode ser chamada ao mesmo tempo por várias outras funções.
+        Isso pode levar a resultados indesejados ou à execução indevida do código.
+        Em blockchain e em outras tecnologias descentralizadas, a reentrancy é um problema comum que pode levar à manipulação da blockchain ou à perda de fundos.
+        É importante que os desenvolvedores tomem medidas para garantir que os smart contracts sejam construídos de forma segura e resistentes à reentrancy.
+
     Front Running
+
+        Front running é uma técnica de trading em que um trader usa informações confidenciais para comprar ou vender ativos antes que eles sejam divulgados ao público.
+        Isso pode ser feito em criptomoedas, ações, commodities ou outros ativos financeiros.
+        Isso é considerado uma prática ilegal e pode levar a penalidades ou até mesmo a ações judiciais.
+        Em blockchain, os traders podem também usar informações sobre transações em pipeline para criar uma vantagem indevida e comprar ou vender antes do mercado.
+        É importante lembrar que a prática de front running não é ética e pode ser um crime.
 
 Access Control
 

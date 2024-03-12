@@ -1,0 +1,546 @@
+Aula 8 
+
+		Estrutura ERC721
+
+            IPFS: Node (como se fosse um ggole drive distribuido)
+
+                O NFT não esta no ethereum, ele esta na IPFS
+
+            Backend > Web3 > tx (consulta o NFT) > ERC721 NFT > IPFS 
+
+                    / SPDX-License-Identifier: MIT
+                    pragma solidity ^0.8.20;
+                                
+                    contract ERC721 {
+                        string public name;
+                        string public symbol;
+                        
+                        mapping(uint256 => address) private _owners;
+                        
+                            //Exemplo
+                            // | key 		| valor
+                            // | uint256 	| address
+                            // | 1 			| 0x5FbDB2315678afecb367f032d93F642f64180aa3 |
+                            // | 2 			| 0x5FbDB2315678afecb367f032d93F642f64180aa3 |
+                            // | 3 			| 0x5FbDB2315678afecb367f032d93F642f64180aa3 |
+                            // | 4 			| 0x5FbDB2315678afecb367f032d93F642f64180aa3 |	
+                        
+                        mapping(address owner => mapping(address operator => bool)) private
+                        
+                            //Exemplo
+                            // | key 				| key/valor         | valor |
+                            // | address 			| address           | bool  |
+                            // | 0x5FbD...sLJK3 	| 0x5FbD...sLJK3    | true  |
+                            // | 0x5FbD...sLJK3 	| 0x5FbD...sLJK3    | false |
+                            
+                        construtor(string memory _name, string memory _symbol) {
+                            symbol = _symbol;
+                        }	
+                            
+
+
+                        function ownerOf(uint256 tokenId) public view virtual returns (address
+                            return nfts[tokenId]
+
+                        
+                        mapping(address owner => mapping(address operator=> bool)) allowances;
+                        
+
+                            // | storage	| Memory 			| calldata |
+                            // | blockchain	| runtime 			| calldata |
+                            // | HIGH		| MEDIUM 			| LOW |
+
+
+    Conteudo para Aprender sobre as funções de contrato ERC721.
+
+        https://docs.openzeppelin.com/learn/developing-smart-contracts
+        https://github.com/OpenZeppelin
+        https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/token/ERC721
+
+    
+
+    Notação
+        Este conjunto de interfaces, contratos e utilitários está relacionado ao padrão NFT de Non-Fungible Token de ERC-721.
+
+    Dica
+        Para obter informações sobre como criar um token ERC-721, leia nosso guia de ERC-721.
+
+        A ERC especifica quatro interfaces:
+
+            {IERC721}: Funcionamentos básicos necessários para todas as implementações conformes.
+
+            {IERC721Metadata}: Extensão opcional que adiciona o nome, símbolo e URL do token e é quase sempre incluída.
+
+            {IERC721Enumerable}: Extensão opicional que permite a contagem dos tokens na rede, geralmente não incluída, uma vez que requer grandes despesas de gás.
+
+            {IERC721Receiver}: Uma interface que deve ser implementada pelos contratos se quiserem aceitar tokens por meio de safeTransferFrom.
+
+        A OpenZeppelin Contracts fornece implementações de todas as quatro interfaces:
+
+            {ERC721}: A extensão básica e de meta.
+
+            {ERC721Enumerable}: A extensão enumerável.
+
+            {ERC721Holder}: Uma implementação básica da interface receiver.
+
+        Há algumas outras extensões adicionais:
+
+            {ERC721Consecutive}: Uma implementação do padrão ERC-2309 para a emissão de lotes de tokens durante a construção, de acordo com o ERC-721.
+
+            {ERC721URIStorage}: Uma maneira mais flexível, mas mais cara de armazena
+
+
+                    // SPDX-License-Identifier: MIT
+                    // OpenZeppelin Contracts (last updated v5.0.0) (token/ERC721/ERC721.sol)
+
+                    pragma solidity ^0.8.20;
+
+                    import {IERC721} from "./IERC721.sol";
+                    import {IERC721Metadata} from "./extensions/IERC721Metadata.sol";
+                    import {ERC721Utils} from "./utils/ERC721Utils.sol";
+                    import {Context} from "../../utils/Context.sol";
+                    import {Strings} from "../../utils/Strings.sol";
+                    import {IERC165, ERC165} from "../../utils/introspection/ERC165.sol";
+                    import {IERC721Errors} from "../../interfaces/draft-IERC6093.sol";
+
+                    /**
+                    * @dev Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC-721] Non-Fungible Token Standard, including
+                    * the Metadata extension, but not including the Enumerable extension, which is available separately as
+                    * {ERC721Enumerable}.
+                    */
+                    abstract contract ERC721 is Context, ERC165, IERC721, IERC721Metadata, IERC721Errors {
+                        using Strings for uint256;
+
+                        // Token name
+                        string private _name;
+
+                        // Token symbol
+                        string private _symbol;
+
+                        mapping(uint256 tokenId => address) private _owners;
+
+                        mapping(address owner => uint256) private _balances;
+
+                        mapping(uint256 tokenId => address) private _tokenApprovals;
+
+                        mapping(address owner => mapping(address operator => bool)) private _operatorApprovals;
+
+                        /**
+                        * @dev Inicializa o contrato definindo um `nome` e um `símbolo` para a coleção de tokens.
+                        */
+                        constructor(string memory name_, string memory symbol_) {
+                            _name = name_;
+                            _symbol = symbol_;
+                        }
+
+                        /**
+                        * @dev See {IERC165-supportsInterface}.
+                        */
+                        function supportsInterface(bytes4 interfaceId) public view virtual override(ERC165, IERC165) returns (bool) {
+                            return
+                                interfaceId == type(IERC721).interfaceId ||
+                                interfaceId == type(IERC721Metadata).interfaceId ||
+                                super.supportsInterface(interfaceId);
+                        }
+
+                        /**
+                        * @dev See {IERC721-balanceOf}.
+                        */
+                        function balanceOf(address owner) public view virtual returns (uint256) {
+                            if (owner == address(0)) {
+                                revert ERC721InvalidOwner(address(0));
+                            }
+                            return _balances[owner];
+                        }
+
+                        /**
+                        * @dev See {IERC721-ownerOf}.
+                        */
+                        function ownerOf(uint256 tokenId) public view virtual returns (address) {
+                            return _requireOwned(tokenId);
+                        }
+
+                        /**
+                        * @dev See {IERC721Metadata-name}.
+                        */
+                        function name() public view virtual returns (string memory) {
+                            return _name;
+                        }
+
+                        /**
+                        * @dev See {IERC721Metadata-symbol}.
+                        */
+                        function symbol() public view virtual returns (string memory) {
+                            return _symbol;
+                        }
+
+                        /**
+                        * @dev See {IERC721Metadata-tokenURI}.
+                        */
+                        function tokenURI(uint256 tokenId) public view virtual returns (string memory) {
+                            _requireOwned(tokenId);
+
+                            string memory baseURI = _baseURI();
+                            return bytes(baseURI).length > 0 ? string.concat(baseURI, tokenId.toString()) : "";
+                        }
+
+                        /**
+                        * @dev URI base para computação {tokenURI}. Se definido, o URI resultante para cada
+                        * token será a concatenação do `baseURI` e do `tokenId`. Vazio
+                        * por padrão, pode ser substituído em contratos secundários.
+                        */
+                        function _baseURI() internal view virtual returns (string memory) {
+                            return "";
+                        }
+
+                        /**
+                        * @dev See {IERC721-approve}.
+                        */
+                        function approve(address to, uint256 tokenId) public virtual {
+                            _approve(to, tokenId, _msgSender());
+                        }
+
+                        /**
+                        * @dev See {IERC721-getApproved}.
+                        */
+                        function getApproved(uint256 tokenId) public view virtual returns (address) {
+                            _requireOwned(tokenId);
+
+                            return _getApproved(tokenId);
+                        }
+
+                        /**
+                        * @dev See {IERC721-setApprovalForAll}.
+                        */
+                        function setApprovalForAll(address operator, bool approved) public virtual {
+                            _setApprovalForAll(_msgSender(), operator, approved);
+                        }
+
+                        /**
+                        * @dev See {IERC721-isApprovedForAll}.
+                        */
+                        function isApprovedForAll(address owner, address operator) public view virtual returns (bool) {
+                            return _operatorApprovals[owner][operator];
+                        }
+
+                        /**
+                        * @dev See {IERC721-transferFrom}.
+                        */
+                        function transferFrom(address from, address to, uint256 tokenId) public virtual {
+                            if (to == address(0)) {
+                                revert ERC721InvalidReceiver(address(0));
+                            }
+                            // Definir argumentos "auth" habilita a verificação `_isAuthorized` que verifica se o token existe.
+                            // (from != 0). Portanto, não é necessário verificar se o valor de retorno não é 0 aqui.
+                            address previousOwner = _update(to, tokenId, _msgSender());
+                            if (previousOwner != from) {
+                                revert ERC721IncorrectOwner(from, tokenId, previousOwner);
+                            }
+                        }
+
+                        /**
+                        * @dev See {IERC721-safeTransferFrom}.
+                        */
+                        function safeTransferFrom(address from, address to, uint256 tokenId) public {
+                            safeTransferFrom(from, to, tokenId, "");
+                        }
+
+                        /**
+                        * @dev See {IERC721-safeTransferFrom}.
+                        */
+                        function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory data) public virtual {
+                            transferFrom(from, to, tokenId);
+                            ERC721Utils.checkOnERC721Received(_msgSender(), from, to, tokenId, data);
+                        }
+
+                        /**
+                        * @dev Retorna o proprietário do `tokenId`. NÃO reverte se o token não existir
+                        *
+                        * IMPORTANT: Quaisquer substituições a esta função que adicionem propriedade de tokens não rastreados pelo
+                        * A lógica principal do ERC-721 DEVE ser combinada com o uso de {_increaseBalance} para manter os saldos
+                        * consistente com a propriedade. A invariante a preservar é que para qualquer endereço `a` o valor retornado por
+                        * `balanceOf(a)` deve ser igual ao número de tokens de forma que `_ownerOf(tokenId)` seja `a`.
+                        */
+                        function _ownerOf(uint256 tokenId) internal view virtual returns (address) {
+                            return _owners[tokenId];
+                        }
+
+                        /**
+                        * @dev Retorna o endereço aprovado para `tokenId`. Retorna 0 se `tokenId` não for mintado/cunhado.
+                        */
+                        function _getApproved(uint256 tokenId) internal view virtual returns (address) {
+                            return _tokenApprovals[tokenId];
+                        }
+
+                        /**
+                        * @dev Retorna se `spender` tem permissão para gerenciar tokens do `owner` ou `tokenId` em
+                        * particular (ignorando se pertence ao `owner`).
+                        *
+                        * WARNING: Esta função assume que `owner` é o verdadeiro proprietário de `tokenId` e não verifica isso, suposição.
+                        */
+                        function _isAuthorized(address owner, address spender, uint256 tokenId) internal view virtual returns (bool) {
+                            return
+                                spender != address(0) &&
+                                (owner == spender || isApprovedForAll(owner, spender) || _getApproved(tokenId) == spender);
+                        }
+
+                        /**
+                        * @dev Verifica se `spender` pode operar em `tokenId`, assumindo que o `proprietário` fornecido é o proprietário real.
+                        * Reverte se o `spender` não tiver aprovação do `owner` fornecido para o token fornecido ou para todos os seus ativos
+                        * o `spender` para o `tokenId` específico.
+                        *
+                        * WARNING: Esta função assume que `owner` é o verdadeiro proprietário de `tokenId` e não verifica isso
+                        * suposição.
+                        */
+                        function _checkAuthorized(address owner, address spender, uint256 tokenId) internal view virtual {
+                            if (!_isAuthorized(owner, spender, tokenId)) {
+                                if (owner == address(0)) {
+                                    revert ERC721NonexistentToken(tokenId);
+                                } else {
+                                    revert ERC721InsufficientApproval(spender, tokenId);
+                                }
+                            }
+                        }
+
+                        /**
+                        * @dev Acesso de gravação inseguro aos saldos, usado por extensões que "cunham" tokens usando uma substituição {ownerOf}.
+                        *
+                        * NOTE: o valor é limitado a type(uint128).max. Isso protege contra o estouro de _balance. Não é realista que
+                        * um uint256 transbordaria de incrementos quando esses incrementos fossem limitados a valores uint128.
+                        *
+                        * WARNING: Aumentar o saldo de uma conta usando esta função tende a ser combinado com uma substituição do
+                        * Função {_ownerOf} para resolver a propriedade dos tokens correspondentes para que os saldos e a propriedade
+                        * permaneçam consistentes um com o outro.
+                        */
+                        function _increaseBalance(address account, uint128 value) internal virtual {
+                            unchecked {
+                                _balances[account] += value;
+                            }
+                        }
+
+                        /**
+                        * @dev Transfere `tokenId` de seu proprietário atual para `to` ou, alternativamente, cunha (ou queima) se o proprietário atual
+                        * (ou `to`) é o endereço zero. Retorna o proprietário do `tokenId` antes da atualização.
+                        *
+                        * O argumento `auth` é opcional. Se o valor passado for diferente de 0, então esta função irá verificar se
+                        * `auth` é o proprietário do token ou aprovado para operar no token (pelo proprietário).
+                        *
+                        * Emits a {Transfer} event.
+                        *
+                        * NOTE: Se substituir esta função de uma forma que rastreie saldos, consulte também {_increaseBalance}.
+                        */
+                        function _update(address to, uint256 tokenId, address auth) internal virtual returns (address) {
+                            address from = _ownerOf(tokenId);
+
+                            // Execute a verificação do operador (opcional)
+                            if (auth != address(0)) {
+                                _checkAuthorized(from, auth, tokenId);
+                            }
+
+                            // Execute a atualização
+                            if (from != address(0)) {
+                                // Aprovação clara. Não há necessidade de reautorizar ou emitir o evento Approval
+                                _approve(address(0), tokenId, address(0), false);
+
+                                unchecked {
+                                    _balances[from] -= 1;
+                                }
+                            }
+
+                            if (to != address(0)) {
+                                unchecked {
+                                    _balances[to] += 1;
+                                }
+                            }
+
+                            _owners[tokenId] = to;
+
+                            emit Transfer(from, to, tokenId);
+
+                            return from;
+                        }
+
+                        /**
+                        * @dev Cunha `tokenId` e transfere-o para `to`.
+                        *
+                        * WARNING: O uso deste método é desencorajado, use {_safeMint} sempre que possível
+                        *
+                        * Requirements:
+                        *
+                        * - `tokenId` não deve existir.
+                        * - `to` não pode ser o endereço zero.
+                        *
+                        * Emite um evento {Transfer}.
+                        */
+                        function _mint(address to, uint256 tokenId) internal {
+                            if (to == address(0)) {
+                                revert ERC721InvalidReceiver(address(0));
+                            }
+                            address previousOwner = _update(to, tokenId, address(0));
+                            if (previousOwner != address(0)) {
+                                revert ERC721InvalidSender(address(0));
+                            }
+                        }
+
+                        /**
+                        * @dev Mints `tokenId`, transfere-o para `to` e verifica a aceitação de `to`.
+                        *
+                        * Requirements:
+                        *
+                        * - `tokenId` não deve existir.
+                        * - Se `to` se refere a um contrato inteligente, ele deve implementar {IERC721Receiver-onERC721Received}, que é chamado para uma transferência segura.
+                        *
+                        * Emite um evento {Transfer}.
+                        */
+                        function _safeMint(address to, uint256 tokenId) internal {
+                            _safeMint(to, tokenId, "");
+                        }
+
+                        /**
+                        * @dev Igual a {xref-ERC721-_safeMint-address-uint256-}[`_safeMint`], with an additional `data` parâmetro que é
+                        * encaminhado em {IERC721Receiver-onERC721Received} aos destinatários do contrato.
+                        */
+                        function _safeMint(address to, uint256 tokenId, bytes memory data) internal virtual {
+                            _mint(to, tokenId);
+                            ERC721Utils.checkOnERC721Received(_msgSender(), address(0), to, tokenId, data);
+                        }
+
+                        /**
+                        * @dev Destrói `tokenId`.
+                        * A aprovação é cancelada quando o token é queimado.
+                        * Esta é uma função interna que não verifica se o remetente está autorizado a operar no token.
+                        *
+                        * Requirements:
+                        *
+                        * - `tokenId` deve existir.
+                        *
+                        * Emite um evento {Transfer}.
+                        */
+                        function _burn(uint256 tokenId) internal {
+                            address previousOwner = _update(address(0), tokenId, address(0));
+                            if (previousOwner == address(0)) {
+                                revert ERC721NonexistentToken(tokenId);
+                            }
+                        }
+
+                        /**
+                        * @dev Transfere `tokenId` de `from` para `to`.
+                        *  Ao contrário de {transferFrom}, isso não impõe restrições a msg.sender.
+                        *
+                        * Requirements:
+                        *
+                        * - `to` não pode ser o endereço zero.
+                        * - `tokenId` o token deve ser de propriedade de `from`.
+                        *
+                        * Emite um evento {Transfer}.
+                        */
+                        function _transfer(address from, address to, uint256 tokenId) internal {
+                            if (to == address(0)) {
+                                revert ERC721InvalidReceiver(address(0));
+                            }
+                            address previousOwner = _update(to, tokenId, address(0));
+                            if (previousOwner == address(0)) {
+                                revert ERC721NonexistentToken(tokenId);
+                            } else if (previousOwner != from) {
+                                revert ERC721IncorrectOwner(from, tokenId, previousOwner);
+                            }
+                        }
+
+                        /**
+                        * @dev Transferências com segurança `tokenId` token de `from` para `to`, verificar se os destinatários do contrato
+                        * estão cientes do padrão ERC-721 para evitar que os tokens sejam bloqueados para sempre.
+                        *
+                        * `data` são dados adicionais, não possuem formato especificado e são enviados em chamada para `to`.
+                        *
+                        * Esta função interna é como {safeTransferFrom} no sentido de que invoca.
+                        * {IERC721Receiver-onERC721Received} no receptor e pode ser usado, por exemplo.
+                        * implementar mecanismos alternativos para realizar a transferência de tokens, como os baseados em assinatura.
+                        *
+                        * Requirements:
+                        *
+                        * - `tokenId` o token deve existir e ser de propriedade de `from`.
+                        * - `to` não pode ser o endereço zero.
+                        * - `from` não pode ser o endereço zero.
+                        * - Se `to` se refere a um contrato inteligente, ele deve implementar {IERC721Receiver-onERC721Received}, que é chamado para uma transferência segura.
+                        *
+                        * Emite um evento {Transfer}.
+                        */
+                        function _safeTransfer(address from, address to, uint256 tokenId) internal {
+                            _safeTransfer(from, to, tokenId, "");
+                        }
+
+                        /**
+                        * @dev Igual a {xref-ERC721-_safeTransfer-address-address-uint256-}[`_safeTransfer`], com um parâmetro `data` adicional que é
+                        * encaminhado em {IERC721Receiver-onERC721Received} para destinatários do contrato.
+                        */
+                        function _safeTransfer(address from, address to, uint256 tokenId, bytes memory data) internal virtual {
+                            _transfer(from, to, tokenId);
+                            ERC721Utils.checkOnERC721Received(_msgSender(), from, to, tokenId, data);
+                        }
+
+                        /**
+                        * @dev Aprovar `to` para operar em `tokenId`
+                        *
+                        * O argumento `auth` é opcional. Se o valor passado for diferente de 0, então esta função irá verificar se `auth` é
+                        * o proprietário do token ou aprovado para operar em todos os tokens detidos por este proprietário.
+                        *
+                        * Emite um evento {Approval}.
+                        *
+                        * As substituições desta lógica devem ser feitas na variante com um argumento `bool emitEvent` adicional.
+                        */
+                        function _approve(address to, uint256 tokenId, address auth) internal {
+                            _approve(to, tokenId, auth, true);
+                        }
+
+                        /**
+                        * @dev Variante de `_approve` com um sinalizador opcional para ativar ou desativar o evento {Approval}. O evento não é
+                        * emitidos no contexto de transferências.
+                        */
+                        function _approve(address to, uint256 tokenId, address auth, bool emitEvent) internal virtual {
+                            // Avoid reading the owner unless necessary
+                            if (emitEvent || auth != address(0)) {
+                                address owner = _requireOwned(tokenId);
+
+                                // We do not use _isAuthorized because single-token approvals should not be able to call approve
+                                if (auth != address(0) && owner != auth && !isApprovedForAll(owner, auth)) {
+                                    revert ERC721InvalidApprover(auth);
+                                }
+
+                                if (emitEvent) {
+                                    emit Approval(owner, to, tokenId);
+                                }
+                            }
+
+                            _tokenApprovals[tokenId] = to;
+                        }
+
+                        /**
+                        * @dev Aprovar o `operador` para operar em todos os tokens do `proprietário`
+                        *
+                        * Requirements:
+                        * - operador não pode ser o endereço zero.
+                        *
+                        * Emite um envento {ApprovalForAll}.
+                        */
+                        function _setApprovalForAll(address owner, address operator, bool approved) internal virtual {
+                            if (operator == address(0)) {
+                                revert ERC721InvalidOperator(operator);
+                            }
+                            _operatorApprovals[owner][operator] = approved;
+                            emit ApprovalForAll(owner, operator, approved);
+                        }
+
+                        /**
+                        * @dev Reverte se o `tokenId` não tiver um proprietário atual (não foi cunhado ou foi queimado).
+                        * Retorna o proprietário.
+                        *
+                        * As substituições na lógica de propriedade devem ser feitas para {_ownerOf}.
+                        */
+                        function _requireOwned(uint256 tokenId) internal view returns (address) {
+                            address owner = _ownerOf(tokenId);
+                            if (owner == address(0)) {
+                                revert ERC721NonexistentToken(tokenId);
+                            }
+                            return owner;
+                        }
+                    }
